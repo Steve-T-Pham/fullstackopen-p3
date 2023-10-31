@@ -26,6 +26,10 @@ let persons = [
     }
 ]
 
+const generateId = () => {
+  return(Math.floor(Math.random() * 1000));
+}
+
 app.get('/info', (req, res) =>{
     const date = new Date();
 
@@ -55,6 +59,31 @@ app.delete('/api/persons/:id', (req, res) => {
     persons = persons.filter(person => person.id != id);
 
     res.status(204).end();
+})
+
+app.post('/api/persons', (req, res) => {
+  const body = req.body;
+  const isDuplicate = persons.find(person => person.name === body.name);
+
+  if (!body.name || !body.number){
+    return res.status(400).json({
+      error: 'content missing'
+    })
+  }
+  else if (isDuplicate) {
+    return res.status(400).json({
+      error: 'name must be unique'
+    })
+  }
+
+  const person = {
+    name: body.name,
+    number: body.number,
+    id: generateId()
+  }
+
+  persons = persons.concat(person);
+  res.json(persons);
 })
 
 const PORT = 3001
