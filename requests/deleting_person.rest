@@ -1,1 +1,1 @@
-DELETE http://localhost:3001/api/persons/4
+DELETE https://wispy-snow-4395.fly.dev/api/persons/4
