@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for wispy-snow-4395 on 2023-10-30T23:09:56-04:00
+# fly.toml app configuration file generated for stp40-phonebook on 2023-11-01T19:20:17-04:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "wispy-snow-4395"
+app = "stp40-phonebook"
 primary_region = "ord"
 
 [build]
